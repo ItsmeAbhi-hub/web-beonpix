@@ -1,0 +1,47 @@
+body {
+  cursor: none !important;
+}
+
+/* Modern glowing orb cursor */
+.custom-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background: rgba(255, 255, 150, 0.2); /* Soft neon yellow tint */
+  border: 1px solid rgba(255, 255, 150, 0.5);
+  backdrop-filter: blur(4px); /* Glassmorphism effect */
+  box-shadow: 0 0 10px rgba(255, 255, 120, 0.4), 0 0 20px rgba(255, 255, 120, 0.2);
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+  transition: all 0.2s ease-out;
+}
+
+/* Hover state (larger, sharper glow) */
+.custom-cursor.cursor-hover {
+  width: 30px;
+  height: 30px;
+  background: rgba(255, 255, 180, 0.3);
+  box-shadow: 0 0 15px rgba(255, 255, 150, 0.6), 0 0 30px rgba(255, 255, 120, 0.4);
+  border: 1px solid rgba(255, 255, 150, 0.7);
+}
+
+/* Click effect (pulse + flare) */
+.custom-cursor.cursor-click {
+  width: 36px;
+  height: 36px;
+  background: rgba(255, 255, 100, 0.4);
+  box-shadow: 0 0 25px rgba(255, 255, 100, 0.9), 0 0 50px rgba(255, 255, 100, 0.4);
+  animation: pulse-click 0.3s ease-out;
+  border: 1px solid rgba(255, 255, 100, 0.8);
+}
+
+/* Click animation */
+@keyframes pulse-click {
+  0% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+  50% { transform: translate(-50%, -50%) scale(1.4); opacity: 0.8; }
+  100% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+}

@@ -1,0 +1,39 @@
+@keyframes leftToRightFade {
+    0% {
+      mask-position: 0% 0%;
+      -webkit-mask-position: 0% 0%;
+    }
+    100% {
+      mask-position: 100% 0%;
+      -webkit-mask-position: 100% 0%;
+    }
+  }
+  
+  .fade-left-to-right {
+    /* Dramatic gradient: more transparent at start */
+    mask-image: linear-gradient(
+      to right,
+      rgba(0, 0, 0, 0) 0%,
+      rgba(0, 0, 0, 0.3) 25%,
+      rgba(0, 0, 0, 0.7) 50%,
+      rgba(0, 0, 0, 1) 100%
+    );
+    -webkit-mask-image: linear-gradient(
+      to right,
+      rgba(0, 0, 0, 0) 0%,
+      rgba(0, 0, 0, 0.3) 25%,
+      rgba(0, 0, 0, 0.7) 50%,
+      rgba(0, 0, 0, 1) 100%
+    );
+  
+    mask-size: 1000% 300%;
+    -webkit-mask-size: 1000% 300%;
+    mask-repeat: no-repeat;
+    -webkit-mask-repeat: no-repeat;
+  
+    /* Slower for visible progression */
+    animation: leftToRightFade 4s ease-in-out forwards;
+    -webkit-animation: leftToRightFade 4s ease-in-out forwards;
+  
+    opacity: 1; /* fallback */
+  }  
