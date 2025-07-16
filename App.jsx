@@ -1,15 +1,15 @@
 import { useEffect } from "react";
 import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Home from "./pages/Home/Home";
-import About from "./pages/About/About";
-import ContactForm from "./components/Home/ContactForm";
-import MobileDev from "./pages/Mobiledev/Mobiledevelopment";
-import WebDev from "./pages/Webdev/Webdevelopment";
-import Uiux from "./pages/Uiux/Uiuxdesign";
-import Graphic from "./pages/Webdesign/Webdesign";
-import Brand from "./pages/Branding/Branding";
-import Academy from "./pages/Academic/Academic";
+import Home from "./src/pages/Home/Home";
+import About from "./src/pages/About/About";
+import ContactForm from "./src/components/Home/ContactForm";
+import MobileDev from "./src/pages/Mobiledev/Mobiledevelopment";
+import WebDev from "./src/pages/Webdev/Webdevelopment";
+import Uiux from "./src/pages/Uiux/Uiuxdesign";
+import Graphic from "./src/pages/Webdesign/Webdesign";
+import Brand from "./src/pages/Branding/Branding";
+import Academy from "./src/pages/Academic/Academic";
 
 function App() {
   useEffect(() => {
