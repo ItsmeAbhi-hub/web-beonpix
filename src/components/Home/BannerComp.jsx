@@ -7,59 +7,36 @@ import "./BannerComp.css";
 
 const BannerComp = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [isLoading, setIsLoading] = useState(() => {
-    // Check if preload has already occurred
-    const hasPreloaded = sessionStorage.getItem("hasPreloaded");
-    return !hasPreloaded;
-  });
+  const [isLoading, setIsLoading] = useState(false); // Disable loading screen
+  const [videosLoaded, setVideosLoaded] = useState(false);
   const videoRefs = useRef([]);
   const videos = [bannerVideo1, bannerVideo2, bannerVideo3];
 
   useEffect(() => {
-    if (isLoading) {
-      const loadingTimeout = setTimeout(() => {
-        setIsLoading(false);
-        // Set a flag to avoid reloading on next route visits
-        sessionStorage.setItem("hasPreloaded", "true");
-      }, 6000);
-      return () => clearTimeout(loadingTimeout);
-    }
-  }, [isLoading]);
-
-  useEffect(() => {
-    if (!isLoading) {
-      const interval = setInterval(() => {
-        setCurrentIndex((prevIndex) =>
-          prevIndex === videos.length - 1 ? 0 : prevIndex + 1
-        );
-      }, 3000);
-      return () => clearInterval(interval);
-    }
-  }, [isLoading]);
+    // Show content immediately, load videos in background
+    setVideosLoaded(true);
+    
+    const interval = setInterval(() => {
+      setCurrentIndex((prevIndex) =>
+        prevIndex === videos.length - 1 ? 0 : prevIndex + 1
+      );
+    }, 3000);
+    return () => clearInterval(interval);
+  }, []);
 
   useEffect(() => {
     const currentVideo = videoRefs.current[currentIndex];
-    if (currentVideo) {
+    if (currentVideo && videosLoaded) {
       currentVideo.currentTime = 0;
-      currentVideo.play();
+      currentVideo.play().catch(() => {
+        // Ignore video play errors
+      });
     }
-  }, [currentIndex]);
-
-  if (isLoading) {
-    return (
-      <div className="h-screen w-full flex items-center justify-center bg-black">
-        <img
-          src={logo}
-          alt="Beonpix Logo"
-          className="h-[200px] w-auto fade-left-to-right"
-        />
-      </div>
-    );
-  }
+  }, [currentIndex, videosLoaded]);
 
   return (
-    <div className="relative h-screen w-full overflow-hidden">
-      {videos.map((video, index) => (
+    <div className="relative h-screen w-full overflow-hidden bg-black">
+      {videosLoaded && videos.map((video, index) => (
         <video
           key={index}
           ref={(el) => (videoRefs.current[index] = el)}
@@ -69,6 +46,7 @@ const BannerComp = () => {
           }`}
           muted
           playsInline
+          preload="metadata"
         />
       ))}
 

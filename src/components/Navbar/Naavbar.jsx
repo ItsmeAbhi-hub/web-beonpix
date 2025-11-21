@@ -38,13 +38,10 @@ const Navbar = () => {
     }
   }, [location.pathname]);
 
-  // Show navbar after 1 second (unchanged)
+  // Show navbar immediately
   useEffect(() => {
-    const timer = setTimeout(() => setShowNavbar(true), 1000);
-    return () => clearTimeout(timer);
+    setShowNavbar(true);
   }, []);
-
-  if (!showNavbar) return null; // Hide navbar before 1 second
 
   return (
     <motion.nav

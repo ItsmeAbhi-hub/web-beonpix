@@ -198,11 +198,6 @@ const ServiceComp = () => {
           .service-card:hover,
           .service-card:focus-within {
             transform: scale(1.04);
-            border: 3px solid;
-            border-image: linear-gradient(45deg, #b8860b, #2dd4bf) 1;
-            border-image-slice: 1;
-            box-shadow: 0 8px 24px rgba(184, 134, 11, 0.4), 0 4px 16px rgba(45, 212, 191, 0.3);
-            animation: gradient-slide 2s linear infinite;
           }
           .service-card::after {
             content: '';
@@ -211,7 +206,7 @@ const ServiceComp = () => {
             left: 50%;
             width: 8px;
             height: 8px;
-            background: radial-gradient(circle, #facc15 20%, #2dd4bf 80%);
+            background: radial-gradient(circle, #facc15 20%, #b8860b 80%);
             border-radius: 50%;
             opacity: 0;
             transform: translate(-50%, -50%);
@@ -279,9 +274,9 @@ const ServiceComp = () => {
 
           /* Animations */
           @keyframes gradient-slide {
-            0% { border-image-source: linear-gradient(45deg, #b8860b, #2dd4bf); }
-            50% { border-image-source: linear-gradient(45deg, #2dd4bf, #b8860b); }
-            100% { border-image-source: linear-gradient(45deg, #b8860b, #2dd4bf); }
+            0% { border-image-source: linear-gradient(45deg, #b8860b, #b8860b); }
+            50% { border-image-source: linear-gradient(45deg, #b8860b, #b8860b); }
+            100% { border-image-source: linear-gradient(45deg, #b8860b, #b8860b); }
           }
           @keyframes pulse-overlay {
             0% { opacity: 0.8; }

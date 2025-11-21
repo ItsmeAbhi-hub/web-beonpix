@@ -8,7 +8,10 @@ const TechIcosahedron = () => {
   const particlesRef = useRef();
 
   // Define icosahedron geometry to access vertices and edges
-  const icosahedronGeometry = useMemo(() => new THREE.IcosahedronGeometry(2.5, 0), []);
+  const icosahedronGeometry = useMemo(
+    () => new THREE.IcosahedronGeometry(2.5, 0),
+    []
+  );
 
   // Get edges for particle movement
   const edges = useMemo(() => {
@@ -61,7 +64,10 @@ const TechIcosahedron = () => {
   // Particle geometry and material
   const particleGeometry = useMemo(() => {
     const geom = new THREE.BufferGeometry();
-    geom.setAttribute("position", new THREE.BufferAttribute(particlePositions.positions, 3));
+    geom.setAttribute(
+      "position",
+      new THREE.BufferAttribute(particlePositions.positions, 3)
+    );
     return geom;
   }, [particlePositions.positions]);
 
